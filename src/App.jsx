@@ -11,21 +11,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import LoadingSpinner from './components/LoadingSpinner';
 import { withRouter } from 'react-router-dom';
-import ChatBot from './components/ChatBot';
 import './App.css'; // Import your CSS file for styling
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [showChatBot, setShowChatBot] = useState(true);
-
-  const toggleChatBot = () => {
-    setShowChatBot((prevShowChatBot) => !prevShowChatBot);
-  };
 
   useEffect(() => {
-    const storedShowChatBot = localStorage.getItem('showChatBot');
-    setShowChatBot(storedShowChatBot === 'true' ? true : false);
-
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
@@ -34,8 +25,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('showChatBot', showChatBot.toString());
-
     const handleHashChange = () => {
       setIsLoading(true);
       setTimeout(() => setIsLoading(false), 2000);
@@ -44,7 +33,7 @@ const App = () => {
     window.addEventListener('hashchange', handleHashChange);
 
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [showChatBot]);
+  });
 
   return (
     <div className="App">
