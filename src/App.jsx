@@ -42,7 +42,7 @@ const App = () => {
       ) : (
         <Router>
           <div className="picture-background">
-            <Navbar expand="lg" className="bg-body-tertiary">
+            <Navbar expand="lg">
               <Container>
                 <Navbar.Brand as={Link} to="/home">
                   Growth Mindset Applications
@@ -73,9 +73,11 @@ const App = () => {
               </Container>
             </Navbar>
             <Switch>
-              <Route exact path="/home" component={withRouter(Home)} />
-              <Route exact path="/about" component={About} />
-              <Route path="/quiz" component={AutoQuiz} />
+            <Route exact path="/home" component={withRouter(Home)} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/emoji" component={EmojiApplication} /> {/* Add this line */}
+            <Route exact path="/gms" component={GMSApplication} /> {/* Add this line */}
+            <Route path="/quiz" component={AutoQuiz} />
             </Switch>
           </div>
         </Router>
